@@ -10,15 +10,17 @@ class NewsViewModel{
     private var apiConfig = APIConfig()
     private var news = [Articles]()
     
-    func getHeadLinesNews(completion: ()->()){
+    func getHeadLinesNews(completion: @escaping ()->()){
         apiConfig.getTopStories{result in
             switch result{
             case .success(let response):
                 self.news = response.articles
-                print("count:: \(self.news.count)")
+               // print("count:: \(self.news.count)")
+                completion()
                 break
             case .failure(let error):
                 print(error)
+                completion()
                 break
             }
         }
