@@ -71,10 +71,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let data = newsViewModel.cellForRowAt(indexPath: indexPath)
-        //print(data.title!)
+      //  print(data)
         
         let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        nextViewController.detailsTitle = data.title!
+        nextViewController.articles = data//JSONEncoder().encode(data)
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
